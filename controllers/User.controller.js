@@ -115,8 +115,19 @@ User.updateOne({_id:Object(req.params._id)},newUser).then((user)=>{
 
         })
     })
+}
 
+exports.deleteUser= (req,res)=>{
 
-
+User.deleteOne({_id:Object(req.params._id)}).then(()=>{
+    return res.status(200).send({
+        message:"user deleteted successfully",
+    })
+}).catch(()=>{
+    return res.send({
+        message:"failed to delete the user"
+    })
+    
+})
 
 }
