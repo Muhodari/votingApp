@@ -1,0 +1,173 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "My Voting Project CRUD",
+      "description": "Voting Project Application API",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+   
+    "tags": [
+      {
+        "name": "Users",
+        "description": "API for users in the system"
+      }
+    ],
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+
+
+
+    "paths": {
+        "/Users/": {
+          "get": {
+            "tags": ["Users"],
+            "summary": "Get all users in system",
+            "responses": {
+              "200": {
+                "description": "OK",
+                "schema": {
+                  "$ref": "#/definitions/User"
+                }
+              }
+            }
+          }
+        },
+
+
+
+        "/Users/:_id": {
+            "get": {
+              "tags": ["Users"],
+              "description": "get one user",
+              "parameters": [
+                {
+                  "name": "_id",
+                  "in": "params",
+                  "description": "User that we want to create",
+                  "schema": {
+                    "$ref": "#/definitions/User"
+                  }
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "user found",
+                  "schema": {
+                    "$ref": "#/definitions/User"
+                  }
+                }
+              }
+            }
+          },
+      
+
+        "/Users/add-user": {
+            "post": {
+              "tags": ["Users"],
+              "description": "Create new user in system",
+              "parameters": [
+                {
+                  "name": "user",
+                  "in": "body",
+                  "description": "User that we want to create",
+                  "schema": {
+                    "$ref": "#/definitions/User"
+                  }
+                }
+              ],
+              "produces": ["application/json"],
+              "responses": {
+                "200": {
+                  "description": "New user is created",
+                  "schema": {
+                    "$ref": "#/definitions/User"
+                  }
+                }
+              }
+            }
+          }
+
+
+         
+
+      },
+      "definitions": {
+        "User": {
+          "required": ["names","phone","email","national_id_number","birth_date","age","province",
+                       "district","sector","cell","village"],
+          "properties": {
+            "_id": {
+              "type": "string",
+              "uniqueItems": true
+            },
+            "names": {
+              "type": "string"
+            },
+            "phone": {
+              "type": "string",
+              "uniqueItems": true
+            },
+            "email": {
+                "type": "string",
+                "uniqueItems": true
+                  },
+            "national_id_number": {
+                    "type": "string"
+                    
+                      },
+            "birth_date": {
+                        "type": "Date"
+                          },
+            "age": {
+            "type": "integer"
+            },
+            "province":{
+                "type":"string"
+            },
+            "district":{
+                "type":"string"
+            },
+            "sector":{
+                "type":"string"
+            },
+            "cell":{
+                "type":"string"
+            },
+            "village":{
+                "type":"string"
+            }
+                                                
+              }
+            }
+
+          
+          
+          
+
+         
+        },
+
+        "path":{
+            
+        }
+
+
+
+
+
+
+
+
+
+  }
+
+  
+
+
